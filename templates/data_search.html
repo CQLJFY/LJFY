@@ -126,7 +126,7 @@
         <div class="hr hr32 hr-dotted"></div>
 
         {#        显示工程名称和工程编号#}
-
+    {% if all_pj %}
         <div>
             <h4>
                 工程编号：
@@ -378,6 +378,7 @@
                 <!-- PAGE CONTENT ENDS -->
             </div><!-- /.col -->
         </div><!-- /.row -->
+    {% endif %}
     </div><!-- /.page-content -->
 {% endblock %}
 
