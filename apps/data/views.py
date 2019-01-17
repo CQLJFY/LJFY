@@ -9,7 +9,7 @@ class pj_data(View):
     def get(self, request):
         pass
 
-        return render(request, '项目数据.html', {
+        return render(request, 'data_search.html', {
 
         })
 

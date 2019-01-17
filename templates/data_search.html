@@ -86,25 +86,42 @@
 {% endblock %}
 
 {% block page-content %}
+{#    项目搜索框#}
     <div class="page-content">
+        <div class="widget-box">
+            <div class="widget-header widget-header-small">
+                <h5 class="widget-title lighter">项目数据查询</h5>
+            </div>
 
-                        <div>
-                            <form class="form-inline">
-                                <div class="form-group">
-                                    <lable class="control-lable">工程编号：</lable>
+            <div class="widget-body">
+                <div class="widget-main">
+                    <form class="form-search">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="ace-icon fa fa-check"></i>
+                                        工程编号
+                                    </span>
 
-                                    <input name="fileid" id="account_l" type="text" placeholder="请输入工程编号" />
-
-{#                                    <input type="text" class="form-control" placeholder="请输入工程编号">#}
+                                    <input type="text" class="form-control search-query" placeholder="请输入工程编号" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-purple btn-sm">
+                                            <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+                                            Search
+                                        </button>
+                                    </span>
                                 </div>
-                                <labal>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</labal>
-
-                                <input class="btn btn-info" id="jsLoginBtn" type="submit" value="查询 " />
-                            </form>
-
+                            </div>
                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
                         <div class="hr hr32 hr-dotted"></div>
+
                         <div>
                             <h4>
                                 工程编号：
