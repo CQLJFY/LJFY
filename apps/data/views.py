@@ -18,6 +18,5 @@ class pj_data(View):
         return render(request, 'data_search.html', {
             "all_pj":all_pj,
             "title_pj":title_pj,
-
         })
 
