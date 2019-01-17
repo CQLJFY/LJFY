@@ -95,7 +95,7 @@
 
             <div class="widget-body">
                 <div class="widget-main">
-                    <form class="form-search">
+                    <form class="form-search" action="/pj/data/" method="get">
                         <div class="row">
                             <div class="col-xs-12 col-sm-8">
                                 <div class="input-group">
@@ -104,9 +104,9 @@
                                         工程编号
                                     </span>
 
-                                    <input type="text" class="form-control search-query" placeholder="请输入工程编号" />
+                                    <input name="search" type="text" class="form-control search-query" placeholder="请输入工程编号" />
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-purple btn-sm">
+                                        <button type="submit" class="btn btn-purple btn-sm">
                                             <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
                                             Search
                                         </button>
@@ -114,6 +114,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% csrf_token %}
                     </form>
                 </div>
             </div>
