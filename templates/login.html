@@ -82,15 +82,13 @@
 
 													<div class="clearfix">
                                                         <div class="form-group marb8 {% if login_form.errors.password %}errorput{% endif %}">
+                                                        <div class="error btns login-form-tips" id="jsLoginTips">{% for key,error in login_form.errors.items %}{{ error }}{% endfor %}{{ msg }}</div>
                                                             <label class="inline">
                                                                 <input type="checkbox" class="ace" />
                                                                 <span class="lbl"> 记住密码</span>
                                                             </label>
-                                                        </div>
-                                                    <div class="error btns login-form-tips" id="jsLoginTips">{% for key,error in login_form.errors.items %}{{ error }}{% endfor %}{{ msg }}</div>
-
                                                         <input class="width-35 pull-right btn btn-sm btn-primary" id="jsLoginBtn" type="submit" value="登录 > " />
-
+                                                        </div>
 													</div>
 
 													<div class="space-4"></div>
