@@ -23,7 +23,7 @@ class pj_data(View):
             all_file=None
 
 
-        return render(request, 'test.html', {
+        return render(request, 'data_search.html', {
             "all_pj":all_pj,
             "title_pj":title_pj,
             "all_file":all_file

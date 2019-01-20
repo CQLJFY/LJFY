@@ -18,6 +18,9 @@ class Surveyattribute(models.Model):
         verbose_name = "工程信息"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.pjname[0:50]+'...'
+
 
 class Surveyfile(models.Model):
     idsurveyfile = models.AutoField(verbose_name='ID',db_column='IDsurveyfile', primary_key=True)  # Field name made lowercase.
@@ -57,8 +60,8 @@ class EfficiencyStatistic(models.Model):
 
 
 class CheckInformation(models.Model):
-    check_category = models.CharField(max_length=30)
-    log_level = models.CharField(verbose_name='检查内容',max_length=15)
+    check_category = models.CharField(verbose_name='检查内容',max_length=30)
+    log_level = models.CharField(verbose_name='等级',max_length=15)
     information = models.CharField(verbose_name='内容描述',max_length=100)
     detail = models.CharField(verbose_name='详细内容',max_length=600)
     source = models.ForeignKey('Surveyattribute', models.DO_NOTHING)
@@ -71,4 +74,4 @@ class CheckInformation(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.source
+        return self.source[0:50]+'...'
