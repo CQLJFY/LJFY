@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse,render_to_response
+from django.http import StreamingHttpResponse
+
 from django.views.generic.base import View
 
 from .models import Surveyattribute,Surveyfile,CheckInformation
@@ -29,3 +31,11 @@ class pj_data(View):
             "all_file":all_file
         })
 
+
+class file_down(View):
+    '''
+    文件下载功能
+    '''
+    def get(self,request):
+        pass
+        return render_to_response()

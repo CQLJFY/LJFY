@@ -124,7 +124,7 @@
             </div>
         </div>
 
-        <div class="hr hr32 hr-dotted"></div>
+{#        <div class="hr hr32 hr-dotted"></div>#}
 
         {#        显示工程名称和工程编号#}
     {% if all_pj %}
@@ -202,7 +202,9 @@
                                     <td>{{ pj.filetype }}</td>
 
                                     <td class="hidden-480">
-                                        <span class="label label-sm label-warning">{{ pj.isanalysed }}</span>
+                                        <span class="label label-sm label-warning">
+                                            {{ pj.isanalysed }}
+                                        </span>
                                     <td>
                                         <div class="hidden-sm hidden-xs action-buttons">
                                             <a class="blue" href="#">
@@ -622,5 +624,6 @@
 
         })
     </script>
+
 
 {% endblock %}
