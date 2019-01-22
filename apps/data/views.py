@@ -16,6 +16,8 @@ class pj_data(View):
                                              Q(filepath__contains='.cpf')|
                                              Q(filepath__contains='.svy')|
                                              Q(filepath__contains='.dc'))
+            for i in all_pj:
+                i.filepath=i.filepath.split('\\')[-1]
             # 取出工程编号和工程名称
             title_pj = Surveyattribute.objects.filter(pjid__icontains=search)[:1]
             # 取出搜索工程的检查信息
