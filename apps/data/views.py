@@ -15,7 +15,7 @@ class pj_data(View):
             all_pj=Surveyfile.objects.filter(Q(said__pjid__icontains=search),
                                              Q(filepath__contains='.cpf')|
                                              Q(filepath__contains='.svy')|
-                                             Q(filepath__contains='.dc'))
+                                             Q(filepath__contains='.dc')).order_by("idsurveyfile")
             # 截取文件名并对状态进行映射
             for i in all_pj:
                 i.filepath=i.filepath.split('\\')[-1]
@@ -29,16 +29,16 @@ class pj_data(View):
             # 取出工程编号和工程名称
             title_pj = Surveyattribute.objects.filter(pjid__icontains=search)[:1]
             # 取出搜索工程的检查信息
-            # all_check = CheckInformation.objects.filter(said__pjid__icontains=search)
+            all_check = CheckInformation.objects.filter(source__pjid__icontains=search).order_by("-log_level")
         else:
             all_pj=None
             title_pj=None
             all_check=None
 
-        return render(request, 'data_search.html', {
+        return render(request, 'test.html', {
             "all_pj":all_pj,
             "title_pj":title_pj,
-            # "all_check":all_check,
+            "all_check":all_check,
         })
 
 
