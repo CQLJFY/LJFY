@@ -70,8 +70,22 @@ class CheckInformation(models.Model):
     class Meta:
         managed = False
         db_table = 'check_information'
-        verbose_name = "检查信息"
+        verbose_name = '检查内容'
         verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.source[0:50]+'...'
+
+
+class Points2018(models.Model):
+    source = models.ForeignKey('Surveyattribute', models.DO_NOTHING)
+    wkbgeometry = models.TextField(verbose_name='坐标')  # This field type is a guess.
+    code = models.CharField(verbose_name='编码',max_length=15, blank=True, null=True)
+    observe_time = models.DateTimeField(verbose_name='测量时间',blank=True, null=True)
+    geometry_id = models.AutoField(verbose_name='ID',primary_key=True)
+
+    class Meta:
+        managed = False
+        db_table = 'points_2018'
+        verbose_name = '点位数据'
+        verbose_name_plural = verbose_name

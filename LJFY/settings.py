@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'LJFY.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':'cqcky2',
+        'NAME':'cqkcy',
         'USER':'postgres',
         'PASSWORD':'1234',
         'HOST':'',

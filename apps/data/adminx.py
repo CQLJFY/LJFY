@@ -2,7 +2,7 @@ __author__ = 'zhu'
 __date__ = '2019/1/17 10:22'
 
 import xadmin
-from .models import Surveyfile,Surveyattribute,CheckInformation,EfficiencyStatistic
+from .models import Surveyfile,Surveyattribute,CheckInformation,EfficiencyStatistic,Points2018
 
 
 class SurveyfileAdmin(object):
@@ -39,6 +39,15 @@ class EfficiencyStatisticAdmin(object):
     readonly_fields = ['statistic_id', 'source', 'start_time', 'end_time', 'number_point', 'survey_time', 'total_time']
 
 
+class Points2018Admin(object):
+    list_display = [ 'source', 'wkbgeometry', 'code', 'observe_time', 'geometry_id']
+    search_fields = [ 'source',  'code', 'observe_time', 'geometry_id']
+    list_filter = [ 'source', 'code', 'observe_time', 'geometry_id']
+    # 某些字段只读
+    readonly_fields = [ 'source', 'wkbgeometry', 'code', 'observe_time', 'geometry_id']
+
+
+
 
 
 
@@ -47,3 +56,4 @@ xadmin.site.register(Surveyfile, SurveyfileAdmin)
 xadmin.site.register(Surveyattribute, SurveyattributeAdmin)
 xadmin.site.register(CheckInformation, CheckInformationAdmin)
 xadmin.site.register(EfficiencyStatistic, EfficiencyStatisticAdmin)
+xadmin.site.register(Points2018, Points2018Admin)
