@@ -16,8 +16,16 @@ class pj_data(View):
                                              Q(filepath__contains='.cpf')|
                                              Q(filepath__contains='.svy')|
                                              Q(filepath__contains='.dc'))
+            # 截取文件名并对状态进行映射
             for i in all_pj:
                 i.filepath=i.filepath.split('\\')[-1]
+                if i.said.isanalysed==1:
+                    i.said.isanalysed ='已分析'
+                elif i.said.isanalysed==0:
+                    i.said.isanalysed ='未分析'
+                else:
+                    i.said.isanalysed='文件不全'
+
             # 取出工程编号和工程名称
             title_pj = Surveyattribute.objects.filter(pjid__icontains=search)[:1]
             # 取出搜索工程的检查信息
