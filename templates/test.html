@@ -103,9 +103,11 @@
                             <div class="col-xs-12 col-sm-4">
                                 <div class="input-group">
                                     <span class="input-group-addon">
+                                        <i class="ace-icon fa fa-check"></i>
                                         工程编号
                                     </span>
-                                        <input name="search" type="text" class="form-control search-query"
+
+                                    <input name="search" type="text" class="form-control search-query"
                                            placeholder="请输入工程编号"/>
                                     <span class="input-group-btn">
                                         <button type="submit" class="btn btn-purple btn-sm">
@@ -113,8 +115,6 @@
                                             Search
                                         </button>
                                     </span>
-
-
                                 </div>
                             </div>
                         </div>
@@ -170,12 +170,12 @@
                                             <span class="lbl"></span>
                                         </label>
                                     </th>
-                                    <th>项目文件路径</th>
+                                    <th>项目文件名</th>
                                     <th>详情</th>
                                     <th class="hidden-480">测量员</th>
 
                                     <th>
-                                        <i class=" bigger-110 hidden-480"></i>
+                                        <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
                                         数据类型
                                     </th>
                                     <th class="hidden-480">状态</th>
@@ -186,73 +186,64 @@
 
                                 <tbody>
                                 {% for pj in all_pj %}
-                                    <tr>
-                                        <td class="center">
-                                            <label class="pos-rel">
-                                                <input type="checkbox" class="ace"/>
-                                                <span class="lbl"></span>
-                                            </label>
-                                        </td>
+                                <tr>
+                                    <td class="center">
+                                        <label class="pos-rel">
+                                            <input type="checkbox" class="ace"/>
+                                            <span class="lbl"></span>
+                                        </label>
+                                    </td>
 
-                                        <td>
-                                            {{ pj.filepath }}
-                                        </td>
-                                        <td>
-                                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">简单的折叠</button>
-                                                    <div id="demo" class="collapse">
-                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                                    </div>
-                                        </td>
-                                        <td class="hidden-480">{{ pj.said.surveyperson }}</td>
-                                        <td>{{ pj.said.filetype }}</td>
+                                    <td>
+                                        <a href="#">{{ pj.filepath}}</a>
+                                    </td>
+                                    <td>$45</td>
+                                    <td class="hidden-480">{{ pj.said.surveyperson }}</td>
+                                    <td>{{ pj.said.filetype }}</td>
 
-                                        <td class="hidden-480">
-                                            <span class="label label-sm label-warning">
-                                                {{ pj.said.isanalysed }}
-                                            </span>
-                                        <td>
-                                            <div class="hidden-sm hidden-xs action-buttons">
-                                                <a class="blue" href="#">
-                                                    <i class="fa fa-arrow-down bigger-130"></i>
-                                                </a>
+                                    <td class="hidden-480">
+                                        <span class="label label-sm label-warning">{{ pj.said.isanalysed }}</span>
+                                    <td>
+                                        <div class="hidden-sm hidden-xs action-buttons">
+                                            <a class="blue" href="#">
+                                                <i class="fa fa-arrow-down bigger-130"></i>
+                                            </a>
 
-                                                <a class="green" href="#">
-                                                    <i class="fa fa-arrow-up bigger-130"></i>
-                                                </a>
+                                            <a class="green" href="#">
+                                                <i class="fa fa-arrow-up bigger-130"></i>
+                                            </a>
+                                        </div>
+
+                                        <div class="hidden-md hidden-lg">
+                                            <div class="inline pos-rel">
+                                                <button class="btn btn-minier btn-yellow dropdown-toggle"
+                                                        data-toggle="dropdown" data-position="auto">
+                                                    <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+                                                </button>
+
+                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                                    <li>
+                                                        <a href="#" class="tooltip-info" data-rel="tooltip"
+                                                           title="View">
+                                                            <span class="blue">
+                                                                <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#" class="tooltip-success" data-rel="tooltip"
+                                                           title="Edit">
+                                                            <span class="green">
+                                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </div>
-
-                                            <div class="hidden-md hidden-lg">
-                                                <div class="inline pos-rel">
-                                                    <button class="btn btn-minier btn-yellow dropdown-toggle"
-                                                            data-toggle="dropdown" data-position="auto">
-                                                        <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-                                                    </button>
-
-                                                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                        <li>
-                                                            <a href="#" class="tooltip-info" data-rel="tooltip"
-                                                               title="View">
-                                                                <span class="blue">
-                                                                    <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                                                </span>
-                                                            </a>
-                                                        </li>
-
-                                                        <li>
-                                                            <a href="#" class="tooltip-success" data-rel="tooltip"
-                                                               title="Edit">
-                                                                <span class="green">
-                                                                    <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        </div>
+                                    </td>
+                                </tr>
                                 {% endfor %}
                                 </tbody>
                             </table>
@@ -631,6 +622,5 @@
 
         })
     </script>
-
 
 {% endblock %}

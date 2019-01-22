@@ -9,6 +9,7 @@
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 {% block custom_css %}
+
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
 		<link rel="stylesheet" href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" />
@@ -30,9 +31,11 @@
 		<!--[if lte IE 9]>
 		  <link rel="stylesheet" href="static/assets/css/ace-ie.min.css" />
 		<![endif]-->
-{% endblock %}
+
 		<!-- inline styles related to this page -->
+{% endblock %}
 {% block custom_js %}
+
 		<!-- ace settings handler -->
 		<script src="{% static 'assets/js/ace-extra.min.js' %}"></script>
 
