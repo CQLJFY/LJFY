@@ -10,6 +10,7 @@ from .models import Surveyattribute,Surveyfile,CheckInformation
 class pj_data(View):
     def get(self, request):
         search=request.GET.get("search","")
+        test=None
         if search:
             # 取出搜索工程的所有文件
             all_pj=Surveyfile.objects.filter(Q(said__pjid__icontains=search),
@@ -18,7 +19,10 @@ class pj_data(View):
                                              Q(filepath__contains='.dc')).order_by("idsurveyfile")
             # 截取文件名并对状态进行映射
             for i in all_pj:
-                i.filepath=i.filepath.split('\\')[-1]
+                print(i.filepath)
+                i.filepath=i.filepath.split('\\')[7:]
+                str=' / '
+                i.filepath=str.join(i.filepath)
                 if i.said.isanalysed==1:
                     i.said.isanalysed ='已分析'
                 elif i.said.isanalysed==0:
@@ -35,10 +39,11 @@ class pj_data(View):
             title_pj=None
             all_check=None
 
-        return render(request, 'test.html', {
+        return render(request, 'test2.html', {
             "all_pj":all_pj,
             "title_pj":title_pj,
             "all_check":all_check,
+            "test":test,
         })
 
 
