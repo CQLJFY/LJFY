@@ -1,13 +1,14 @@
-from django.shortcuts import render, HttpResponse,render_to_response
-from django.http import StreamingHttpResponse
+from django.shortcuts import render,render_to_response
 from django.db.models import Q
 from django.views.generic.base import View
+from itertools import chain
 
 from .models import Surveyattribute,Surveyfile,CheckInformation
 
 # Create your views here.
 
 class pj_data(View):
+    # 数据查询
     def get(self, request):
         search=request.GET.get("search","")
         test=None
@@ -19,7 +20,6 @@ class pj_data(View):
                                              Q(filepath__contains='.dc')).order_by("idsurveyfile")
             # 截取文件名并对状态进行映射
             for i in all_pj:
-                print(i.filepath)
                 i.filepath=i.filepath.split('\\')[7:]
                 str=' / '
                 i.filepath=str.join(i.filepath)
@@ -29,11 +29,14 @@ class pj_data(View):
                     i.said.isanalysed ='未分析'
                 else:
                     i.said.isanalysed='文件不全'
-
+            #     取出检查信息并合并
+            #     all_check = CheckInformation.objects.filter(source__idsurveyattribute=i.said.idsurveyattribute).order_by("-log_level")
+            #     all_pj=chain(i,all_check)
             # 取出工程编号和工程名称
             title_pj = Surveyattribute.objects.filter(pjid__icontains=search)[:1]
             # 取出搜索工程的检查信息
             all_check = CheckInformation.objects.filter(source__pjid__icontains=search).order_by("-log_level")
+
         else:
             all_pj=None
             title_pj=None
@@ -43,7 +46,6 @@ class pj_data(View):
             "all_pj":all_pj,
             "title_pj":title_pj,
             "all_check":all_check,
-            "test":test,
         })
 
 
