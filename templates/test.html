@@ -151,7 +151,7 @@
 {#                    显示搜索结果#}
                         <div class="row">
 							<div class="col-xs-12">
-                                {% if all_pj %}
+                                {% if list %}
 								<div class="row">
 									<div class="col-xs-12">
 										<table id="simple-table" class="table  table-bordered table-hover">
@@ -177,7 +177,7 @@
 											</thead>
 
 											<tbody>
-                                            {% for pj in all_pj %}
+                                            {% for pj in list %}
 												<tr>
 													<td class="center">
 														<label class="pos-rel">
@@ -198,9 +198,9 @@
 													<td>
 														<a href="#">{{ pj.filepath}}</a>
 													</td>
-													<td>{{ pj.said.surveyperson }}</td>
-													<td class="hidden-480">{{ pj.said.filetype }}</td>
-													<td>{{ pj.said.isanalysed }}</td>
+													<td>{{ pj.surveyperson }}</td>
+													<td class="hidden-480">{{ pj.filetype }}</td>
+													<td>{{ pj.isanalysed }}</td>
 													<td>
 														<div class="hidden-sm hidden-xs btn-group">
 															<button class="btn btn-xs btn-success">
@@ -265,7 +265,7 @@
                                                                         </thead>
 
                                                                         <tbody>
-                                                                        {% for check in all_check %}
+                                                                        {% for check in pj.all_check %}
                                                                             <tr>
                                                                                 <td>{{ check.check_category}}</td>
                                                                                 <td>{{ check.log_level }}</td>

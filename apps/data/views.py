@@ -31,27 +31,21 @@ class pj_data(View):
                 else:
                     i.said.isanalysed='文件不全'
             #     取出检查信息并合并
-                all_check = CheckInformation.objects.filter(source__idsurveyattribute=i.said.idsurveyattribute).order_by("-log_level")
-                dic = {'filepath':i.filepath,'surveyperson':i.said.surveyperson,'filetype':i.said.filetype,
-                       'isanalysed':i.said.isanalysed,'all_check':all_check}
+                all_check = CheckInformation.objects.filter(source__idsurveyattribute=i.said.idsurveyattribute).order_by(
+                    "-log_level")
+                dic = {'filepath': i.filepath, 'surveyperson': i.said.surveyperson, 'filetype': i.said.filetype,
+                       'isanalysed': i.said.isanalysed, 'all_check': all_check}
                 list.append(dic)
             # 取出工程编号和工程名称
             title_pj = Surveyattribute.objects.filter(pjid__icontains=search)[:1]
 
         else:
+            all_pj=None
             title_pj=None
-            list={}
+            list=[]
+            # all_check=None
 
         return render(request, 'test2.html', {
             "title_pj":title_pj,
             "list":list,
         })
-
-
-class file_down(View):
-    '''
-    文件下载功能
-    '''
-    def get(self,request):
-        pass
-        return render_to_response()
