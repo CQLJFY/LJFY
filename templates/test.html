@@ -198,7 +198,16 @@
 													<td>
 														<a href="#">{{ pj.filepath}}</a>
 													</td>
-													<td>{{ pj.surveyperson }}</td>
+													<td>
+                                                        <div>
+                                                            <select class="chosen-select form-control" id="form-field-select-3" data-placeholder="Choose a State...">
+                                                                <option value="">{{ pj.surveyperson }}</option>
+                                                                {% for person in all_person %}
+																    <option value="AL">{{ person }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </td>
 													<td class="hidden-480">{{ pj.filetype }}</td>
 													<td>{{ pj.isanalysed }}</td>
 													<td>
@@ -248,7 +257,8 @@
 													</td>
 												</tr>
 {#填充质量记录#}
-												<tr class="detail-row">
+{#												<tr {% if pj.flag == 'warn' %} class="detail-row collapse in"{% else %}class="detail-row"{% endif %}>#}
+                                                <tr class="detail-row">
 													<td colspan="7">
 														<div class="table-detail">
 															<div class="row">

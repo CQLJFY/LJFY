@@ -34,18 +34,22 @@ class pj_data(View):
                 all_check = CheckInformation.objects.filter(source__idsurveyattribute=i.said.idsurveyattribute).order_by(
                     "-log_level")
                 dic = {'filepath': i.filepath, 'surveyperson': i.said.surveyperson, 'filetype': i.said.filetype,
-                       'isanalysed': i.said.isanalysed, 'all_check': all_check}
+                       'isanalysed': i.said.isanalysed, 'all_check': all_check,'flag':all_check[0].log_level}
                 list.append(dic)
             # 取出工程编号和工程名称
             title_pj = Surveyattribute.objects.filter(pjid__icontains=search)[:1]
+            # 取出所有的测量员
+            all_person=[person.surveyperson for person in Surveyattribute.objects.all()]
+            # 去重
+            all_person=set(all_person)
 
         else:
-            all_pj=None
             title_pj=None
             list=[]
-            # all_check=None
+            all_person=None
 
         return render(request, 'test2.html', {
             "title_pj":title_pj,
             "list":list,
+            "all_person":all_person,
         })
