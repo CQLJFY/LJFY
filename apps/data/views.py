@@ -62,7 +62,7 @@ class pj_data(View):
             list=[]
             all_person=None
 
-        return render(request, 'test2.html', {
+        return render(request, 'data_search.html', {
             "title_pj":title_pj,
             "list":list,
             "all_person":all_person,
