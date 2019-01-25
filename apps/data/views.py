@@ -1,9 +1,12 @@
+import json
 from django.shortcuts import render,render_to_response
 from django.db.models import Q
 from django.views.generic.base import View
+from django.http import StreamingHttpResponse,HttpResponse
 
-from .models import Surveyattribute,Surveyfile,CheckInformation
+from .models import Surveyattribute,Surveyfile,CheckInformation,Points2018
 from users.models import UserProfile
+from .form import SurveypersonForm
 
 # Create your views here.
 
@@ -41,6 +44,9 @@ class pj_data(View):
                     i.said.isanalysed ='未分析'
                 else:
                     i.said.isanalysed='文件不全'
+            #     取出工程的所有点位数据
+                all_points=Points2018.objects.filter(source__idsurveyattribute=i.said.idsurveyattribute).order_by(
+                    "observe_time")
             #     取出检查信息并合并
                 all_check = CheckInformation.objects.filter(source__idsurveyattribute=i.said.idsurveyattribute).order_by(
                     "-log_level")
@@ -50,19 +56,20 @@ class pj_data(View):
                 else:
                     flag=None
                 dic = {'filepath': i.filepath, 'surveyperson': i.said.surveyperson, 'filetype': i.said.filetype,
-                       'isanalysed': i.said.isanalysed, 'all_check': all_check,'flag':flag}
+                       'isanalysed': i.said.isanalysed, 'all_check': all_check,'flag':flag,'all_points':all_points}
                 list.append(dic)
             # 取出所有的测量员
             all_person=[person.surveyperson for person in Surveyattribute.objects.all()]
-            # 去
+            # 去重
             all_person=set(all_person)
+
 
         else:
             title_pj=None
             list=[]
             all_person=None
 
-        return render(request, 'data_search.html', {
+        return render(request, 'test2.html', {
             "title_pj":title_pj,
             "list":list,
             "all_person":all_person,
