@@ -55,7 +55,8 @@ class pj_data(View):
                     flag=1
                 else:
                     flag=None
-                dic = {'pjid':i.said.pjid,'pjname':i.said.pjname,'filepath': i.filepath, 'surveyperson': i.said.surveyperson, 'filetype': i.said.filetype,
+                dic = {'idsurveyattribute':i.said.idsurveyattribute,'pjid':i.said.pjid,'pjname':i.said.pjname,
+                       'filepath': i.filepath, 'surveyperson': i.said.surveyperson, 'filetype': i.said.filetype,
                        'isanalysed': i.said.isanalysed, 'all_check': all_check,'flag':flag}
                 list.append(dic)
 
@@ -109,35 +110,15 @@ class pj_data(View):
         })
 
 
-
-def file_down(request):
-    """
-    下载压缩文件
-    :param request:
-    :param id: 数据库id
-    :return:
-    """
-    # data = [{"id": "1", "image": "animation.jpg"}]  # 模拟mysql表数据
+def file_down(request,id):
+    print(id)
     file_name = "分析报告.txt"  # 文件名
-    # for i in data:
-    #     if i["id"] == id:  # 判断id一致时
-    #         file_name = i["image"]  # 覆盖变量
-
-    # base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # 项目根目录
-    # file_path = os.path.join('F:LJFY', 'files_download', '渝北2018-07-029-001','王波','山维', file_name)  # 下载文件的绝对路径
     file_path='F:\\LJFY\\files_download\\渝北2018-07-029-001\\王波\\山维\\分析报告.txt'
-
     if not os.path.isfile(file_path):  # 判断下载文件是否存在
         print(file_path)
         return HttpResponse("Sorry but Not Found the File")
 
     def file_iterator(file_path, chunk_size=512):
-        """
-        文件生成器,防止文件过大，导致内存溢出
-        :param file_path: 文件绝对路径
-        :param chunk_size: 块大小
-        :return: 生成器
-        """
         with open(file_path, mode='rb') as f:
             while True:
                 c = f.read(chunk_size)
@@ -145,7 +126,6 @@ def file_down(request):
                     yield c
                 else:
                     break
-
     try:
         # 设置响应头
         # StreamingHttpResponse将文件内容进行流式传输，数据量大可以用这个方法
