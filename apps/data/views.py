@@ -1,6 +1,7 @@
 import json
 from django.shortcuts import render,render_to_response
 from django.db.models import Q
+import os
 from django.views.generic.base import View
 from django.http import StreamingHttpResponse,HttpResponse
 
@@ -58,10 +59,30 @@ class pj_data(View):
                 dic = {'filepath': i.filepath, 'surveyperson': i.said.surveyperson, 'filetype': i.said.filetype,
                        'isanalysed': i.said.isanalysed, 'all_check': all_check,'flag':flag,'all_points':all_points}
                 list.append(dic)
+
+            # 将所有需要下载的资料分别写出文件
+            # 取出外业文件
+            if UserProfile.objects.filter(username=request.user)[0].user_type == "小组长":
+                all_files = Surveyfile.objects.filter(Q(said__pjid__icontains=search),Q(said__surveyperson=request.user))
+            else:
+                all_files = Surveyfile.objects.filter(said__pjid__icontains=search)
+            # 将外业文件写出来
+            for i in all_files:
+                file_path = os.path.split(i.filepath)
+                new_file_path='F:\\文件下载\\'+i.said.pjid+'\\'+i.said.surveyperson+'\\'\
+                              +i.said.filetype+'\\'
+                # 创建目录
+                if i==0:
+                    os.makedirs(new_file_path)
+                with open(new_file_path + file_path[1],'wb') as f:
+                    f.write(bytes(i.content))
             # 取出所有的测量员
             all_person=[person.surveyperson for person in Surveyattribute.objects.all()]
             # 去重
             all_person=set(all_person)
+
+
+
 
 
         else:
