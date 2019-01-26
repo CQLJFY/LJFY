@@ -68,11 +68,9 @@ class pj_data(View):
             # 创建目录
             new_file_path=''
             for i in title_pj:
-                new_file_path = 'F:\\文件下载\\' + i.pjid + '\\' + i.surveyperson + '\\' \
+                new_file_path = "F:\\LJFY\\files_download\\" + i.pjid + '\\' + i.surveyperson + '\\' \
                                 + i.filetype + '\\'
-                if os.path.exists(new_file_path):  #判断文件是否存在
-                    break
-                else:
+                if not os.path.exists(new_file_path):  #判断文件是否存在
                     os.makedirs(new_file_path)  #创建文件
             # 取出外业文件
             if UserProfile.objects.filter(username=request.user)[0].user_type == "小组长":
@@ -99,10 +97,6 @@ class pj_data(View):
                     for j in i['all_check']:
                         f.write(j.log_level+' : '+j.check_category+'  '+j.detail+'  '+ '\n')
                     f.write('\n')
-
-
-
-
         else:
             title_pj=None
             list=[]
@@ -113,3 +107,54 @@ class pj_data(View):
             "list":list,
             "all_person":all_person,
         })
+
+
+
+def file_down(request):
+    """
+    下载压缩文件
+    :param request:
+    :param id: 数据库id
+    :return:
+    """
+    # data = [{"id": "1", "image": "animation.jpg"}]  # 模拟mysql表数据
+    file_name = "分析报告.txt"  # 文件名
+    # for i in data:
+    #     if i["id"] == id:  # 判断id一致时
+    #         file_name = i["image"]  # 覆盖变量
+
+    # base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # 项目根目录
+    # file_path = os.path.join('F:LJFY', 'files_download', '渝北2018-07-029-001','王波','山维', file_name)  # 下载文件的绝对路径
+    file_path='F:\\LJFY\\files_download\\渝北2018-07-029-001\\王波\\山维\\分析报告.txt'
+
+    if not os.path.isfile(file_path):  # 判断下载文件是否存在
+        print(file_path)
+        return HttpResponse("Sorry but Not Found the File")
+
+    def file_iterator(file_path, chunk_size=512):
+        """
+        文件生成器,防止文件过大，导致内存溢出
+        :param file_path: 文件绝对路径
+        :param chunk_size: 块大小
+        :return: 生成器
+        """
+        with open(file_path, mode='rb') as f:
+            while True:
+                c = f.read(chunk_size)
+                if c:
+                    yield c
+                else:
+                    break
+
+    try:
+        # 设置响应头
+        # StreamingHttpResponse将文件内容进行流式传输，数据量大可以用这个方法
+        response = StreamingHttpResponse(file_iterator(file_path))
+        # 以流的形式下载文件,这样可以实现任意格式的文件下载
+        response['Content-Type'] = 'application/octet-stream'
+        # Content-Disposition就是当用户想把请求所得的内容存为一个文件的时候提供一个默认的文件名
+        response['Content-Disposition'] = 'attachment;filename="{}"'.format(file_name)
+    except:
+        return HttpResponse("Sorry but Not Found the File")
+
+    return response
