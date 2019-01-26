@@ -110,8 +110,7 @@ class pj_data(View):
         })
 
 
-def file_down(request,id):
-    print(id)
+def analysis_report_down(request,idsurveyattribute):
     file_name = "分析报告.txt"  # 文件名
     file_path='F:\\LJFY\\files_download\\渝北2018-07-029-001\\王波\\山维\\分析报告.txt'
     if not os.path.isfile(file_path):  # 判断下载文件是否存在
