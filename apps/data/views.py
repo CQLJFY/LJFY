@@ -90,14 +90,7 @@ class pj_data(View):
                 for i in file_points:
                     f.write(i.wkbgeometry+','+i.source.pjid)
                     f.write('\n')
-            # 取出分析结果
-            with open(new_file_path + '分析报告.txt','w') as f:
-                for i in list:
-                    f.write(i['pjid']+' '+i['pjname']+' 数据类型：'+i['filetype']+' 状态：'+i['isanalysed']+'\n')
-                    f.write(i['filepath']+'\n')
-                    for j in i['all_check']:
-                        f.write(j.log_level+' : '+j.check_category+'  '+j.detail+'  '+ '\n')
-                    f.write('\n')
+
         else:
             title_pj=None
             list=[]
@@ -111,10 +104,44 @@ class pj_data(View):
 
 
 def analysis_report_down(request,idsurveyattribute):
+    '''将分析结果取出来，写成文件并下载'''
+    # 取出工程文件
+    obj=Surveyfile.objects.filter(Q(said__idsurveyattribute=idsurveyattribute),
+                                                   Q(filepath__contains='.cpf') |
+                                                   Q(filepath__contains='.svy') |
+                                                   Q(filepath__contains='.dc'))
+    new_file_path = ''
+    for i in obj:
+        # 将文件路径简化
+        i.filepath = i.filepath.split('\\')[7:]
+        str = ' / '
+        i.filepath = str.join(i.filepath)
+        # 完成状态映射
+        if i.said.isanalysed == 1:
+            i.said.isanalysed = '已分析'
+        elif i.said.isanalysed == 0:
+            i.said.isanalysed = '未分析'
+        else:
+            i.said.isanalysed = '文件不全'
+        # 下载文件夹的绝对路径
+        new_file_path = "F:\\LJFY\\files_download\\" + i.said.pjid + '\\' + i.said.surveyperson + '\\' \
+                        + i.said.filetype + '\\'
+        if not os.path.exists(new_file_path):  # 判断文件夹是否存在
+            os.makedirs(new_file_path)  # 创建文件
+    # 将检查数据写成文件
+    all_check = CheckInformation.objects.filter(source__idsurveyattribute=idsurveyattribute). \
+        order_by("-log_level")
+    with open(new_file_path + '分析报告.txt', 'w') as f:
+        for i in all_check:
+            f.write(i.source.pjid + ' ' + i.source.pjname + ' 数据类型：' + i.source.filetype + ' 状态：'+ '\n')
+            # f.write(i.source.filepath + '\n')
+            for j in all_check:
+                f.write(j.log_level + ' : ' + j.check_category + '  ' + j.detail + '  ' + '\n')
+            break
     file_name = "分析报告.txt"  # 文件名
-    file_path='F:\\LJFY\\files_download\\渝北2018-07-029-001\\王波\\山维\\分析报告.txt'
-    if not os.path.isfile(file_path):  # 判断下载文件是否存在
-        print(file_path)
+    new_file_path = os.path.join(new_file_path,file_name)  # 下载文件的绝对路径
+    if not os.path.isfile(new_file_path):  # 判断下载文件是否存在
+        print(new_file_path)
         return HttpResponse("Sorry but Not Found the File")
 
     def file_iterator(file_path, chunk_size=512):
@@ -128,7 +155,7 @@ def analysis_report_down(request,idsurveyattribute):
     try:
         # 设置响应头
         # StreamingHttpResponse将文件内容进行流式传输，数据量大可以用这个方法
-        response = StreamingHttpResponse(file_iterator(file_path))
+        response = StreamingHttpResponse(file_iterator(new_file_path))
         # 以流的形式下载文件,这样可以实现任意格式的文件下载
         response['Content-Type'] = 'application/octet-stream'
         # Content-Disposition就是当用户想把请求所得的内容存为一个文件的时候提供一个默认的文件名
