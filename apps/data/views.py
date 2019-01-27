@@ -88,7 +88,6 @@ def files_download(request,idsurveyattribute,type):
             fpath = fpath and fpath + os.sep or ''  # 这句话理解我也点郁闷，实现当前文件夹以及包含的所有文件的压缩
             for filename in filenames:
                 z.write(os.path.join(dirpath, filename), fpath + filename)
-                print('压缩成功')
         z.close()
     new_file_path = '' #每个文件最终的绝对路径
     file_name=''
@@ -119,7 +118,7 @@ def files_download(request,idsurveyattribute,type):
             # 将检查数据写成文件
             all_check = CheckInformation.objects.filter(source__idsurveyattribute=idsurveyattribute). \
                 order_by("-log_level")
-            with open(new_file_path + '分析报告.txt', 'w') as f:
+            with open(file_path + '分析报告.txt', 'w') as f:
                 for j in all_check:
                     f.write(j.source.pjid + ' ' + j.source.pjname + '  数据类型：' + j.source.filetype + '  状态：'+ i.said.isanalysed+ '\n')
                     f.write(i.filepath + '\n')
@@ -131,7 +130,7 @@ def files_download(request,idsurveyattribute,type):
     elif type=='2':
         # 取出点位数据
         file_points = Points2018.objects.filter(source__idsurveyattribute=idsurveyattribute)
-        with open(new_file_path + '点位数据.txt', 'w') as f:
+        with open(file_path + '点位数据.txt', 'w') as f:
             for i in file_points:
                 f.write(i.wkbgeometry + ',' + i.source.pjid)
                 f.write('\n')
@@ -156,8 +155,6 @@ def files_download(request,idsurveyattribute,type):
 
     if not os.path.isfile(new_file_path):  # 判断下载文件是否存在
         return HttpResponse("Sorry but Not Found the File")
-
-
 
     def file_iterator(file_path, chunk_size=512):
         with open(file_path, mode='rb') as f:
