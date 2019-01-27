@@ -196,29 +196,42 @@
 													<td>
 														{{ pj.filepath}}
 													</td>
+                                                <form class="perinform" id="jsEditUserForm" autocomplete="off">
 													<td>
-                                                        <div>
-                                                            <select class="chosen-select form-control" id="form-field-select-3">
-                                                                <option value="">{{ pj.surveyperson }}</option>
-                                                                {% for person in all_person %}
-																    <option value="AL">{{ person }}</option>
-                                                                {% endfor %}
-                                                            </select>
-                                                        </div>
+                                                        <form>
+                                                            <div>
+                                                                <select class="chosen-select form-control" id="form-field-select-3">
+                                                                    <option value="">{{ pj.surveyperson }}</option>
+                                                                    {% for person in all_person %}
+                                                                        <option value="{{ person }}">{{ person }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+{#                                                                <script>#}
+{#                                                                    function myFunction() {#}
+{#                                                                        document.getElementById("form-field-select-3").value = '${pj.surveyperson}';#}
+{#                                                                    }#}
+{#                                                                    myFunction();#}
+{#                                                                </script>#}
+                                                            </div>
+                                                        </form>
                                                     </td>
 													<td class="hidden-480">{{ pj.filetype }}</td>
 													<td>{{ pj.isanalysed }}</td>
 													<td>
 														<div class="hidden-sm hidden-xs btn-group">
-															<button class="btn btn-xs btn-success">
-																<i class="ace-icon fa fa-check bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-info">
-																<i class="ace-icon fa fa-pencil bigger-120"></i>
-															</button>
+                                                            <a href="{% url 'pj:download' pj.idsurveyattribute 3 %}">外业文件</a>
+                                                            <a href="{% url 'pj:download' pj.idsurveyattribute 2 %}">点位数据</a>
+                                                            <a href="{% url 'pj:download' pj.idsurveyattribute 1 %}">分析报告</a>
+{#                                                            <button class="btn btn-xs btn-info">#}
+{#																点位数据#}
+{#															</button>#}
+{##}
+{#															<button class="btn btn-xs btn-info">#}
+{#																点位数据#}
+{#															</button>#}
 														</div>
 													</td>
+                                                </form>
 												</tr>
 {#填充质量记录#}
 												<tr {% if pj.flag %} class="detail-row collapse in"{% else %}class="detail-row"{% endif %}>
@@ -263,7 +276,7 @@
 							</div><!-- /.col -->
 						</div><!-- /.row -->
                     {% else %}
-                    <label>提示：大组长和管理员可以搜索所有工程，小组长只能搜索自己的工程</label>
+                    <label>提示：未参与此项目</label>
                 {% endif %}
                     </div><!-- /.page-content -->
 
@@ -295,6 +308,7 @@
     <script src="{% static 'assets/js/buttons.print.min.js' %}"></script>
     <script src="{% static 'assets/js/buttons.colVis.min.js' %}"></script>
     <script src="{% static 'assets/js/dataTables.select.min.js' %}"></script>
+    <script scr="{% static 'assets/js/deco-user.js' %}"></script>
 
     <!-- ace scripts -->
     <script src="{% static 'assets/js/ace-elements.min.js' %}"></script>
