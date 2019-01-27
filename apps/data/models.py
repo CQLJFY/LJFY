@@ -83,6 +83,7 @@ class Points2018(models.Model):
     code = models.CharField(verbose_name='编码',max_length=15, blank=True, null=True)
     observe_time = models.DateTimeField(verbose_name='测量时间',blank=True, null=True)
     geometry_id = models.AutoField(verbose_name='ID',primary_key=True)
+    sdfd=models.GenericIPAddressField
 
     class Meta:
         managed = False
