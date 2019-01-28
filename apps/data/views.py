@@ -78,7 +78,7 @@ class pj_data(View):
         })
 
 
-def files_download(request,idsurveyattribute,type):
+def files_download(request,idsurveyattribute,flag):
     '''判断type，把对应的数据写成文件并下载，1是分析报告，2是点位数据，3是外业文件'''
     def zip_ya(startdir,file_news):
         '''文件压缩'''
@@ -89,69 +89,92 @@ def files_download(request,idsurveyattribute,type):
             for filename in filenames:
                 z.write(os.path.join(dirpath, filename), fpath + filename)
         z.close()
-    new_file_path = '' #每个文件最终的绝对路径
-    file_name=''
-    file_path=''# 工程文件夹的绝对路径
-    obj = Surveyfile.objects.filter(Q(said__idsurveyattribute=idsurveyattribute),
-                                    Q(filepath__contains='.cpf') |
-                                    Q(filepath__contains='.svy') |
-                                    Q(filepath__contains='.dc'))
+
+    zip_name=''
+    file_path1=''# 外业文件夹的绝对路径
+    file_path2 = ''#检查报告文件夹的绝对路径
+    test=Surveyattribute.objects.filter(idsurveyattribute=idsurveyattribute)
+    a=''
+    for i in test:
+        a=i.pjid
+    obj=Surveyattribute.objects.filter(pjid=a)
     for i in obj:
-        file_path = "F:\\LJFY\\files_download\\" + i.said.pjid + '\\' + i.said.surveyperson + '\\' \
-                        + i.said.filetype +'\\'+idsurveyattribute+ '\\'
-        if not os.path.exists(file_path):  # 判断文件夹是否存在
-            os.makedirs(file_path)  # 创建文件
-    if type=='1':
-        # 取出工程文件
-        for i in obj:
-            # 将文件路径简化
-            i.filepath = i.filepath.split('\\')[7:]
-            str = ' / '
-            i.filepath = str.join(i.filepath)
-            # 完成状态映射
-            if i.said.isanalysed == 1:
-                i.said.isanalysed = '已分析'
-            elif i.said.isanalysed == 0:
-                i.said.isanalysed = '未分析'
-            else:
-                i.said.isanalysed = '文件不全'
-            # 将检查数据写成文件
-            all_check = CheckInformation.objects.filter(source__idsurveyattribute=idsurveyattribute). \
-                order_by("-log_level")
-            with open(file_path + '分析报告.txt', 'w') as f:
-                for j in all_check:
-                    f.write(j.source.pjid + ' ' + j.source.pjname + '  数据类型：' + j.source.filetype + '  状态：'+ i.said.isanalysed+ '\n')
-                    f.write(i.filepath + '\n')
-                    for x in all_check:
-                        f.write(x.log_level + ' : ' + x.check_category  + '   ' + x.information+ '   ' + x.detail + '   ' + '\n')
-                    break
-        file_name = "分析报告.txt"  # 文件名
-        new_file_path = os.path.join(file_path,file_name)  # 下载文件的绝对路径
-    elif type=='2':
-        # 取出点位数据
-        file_points = Points2018.objects.filter(source__idsurveyattribute=idsurveyattribute)
-        with open(file_path + '点位数据.txt', 'w') as f:
-            for i in file_points:
-                f.write(i.wkbgeometry + ',' + i.source.pjid)
-                f.write('\n')
-        file_name = "点位数据.txt"  # 文件名
-        new_file_path = os.path.join(file_path, file_name)  # 下载文件的绝对路径
-    else:
-        # 取出外业文件
-        all_files = Surveyfile.objects.filter(said__idsurveyattribute=idsurveyattribute)
+        file_path1 = "F:\\LJFY\\files_download\\" + i.pjid + '\\' + i.surveyperson + '\\' \
+                    + i.filetype + '\\' + repr(i.idsurveyattribute) + '\\'+'外业文件'+'\\'
+        file_path2="F:\\LJFY\\files_download\\" + i.pjid + '\\' + i.surveyperson + '\\' \
+                    + i.filetype + '\\' + repr(i.idsurveyattribute) + '\\'+'检查报告'+'\\'
+        zip_name="F:\\LJFY\\files_download\\ZIP\\"+ i.pjid + '.zip'
+        zip_path="F:\\LJFY\\files_download\\ZIP\\"
+        if not os.path.exists(file_path1):  # 判断文件夹是否存在
+            os.makedirs(file_path1)  # 创建文件夹
+        if not os.path.exists(file_path2):  # 判断文件夹是否存在
+            os.makedirs(file_path2)  # 创建文件夹
+        if not os.path.exists(zip_path):  # 判断文件夹是否存在
+            os.makedirs(zip_path)  # 创建文件夹
+
+        # 生成分析报告
+        if not os.path.isfile(file_path2 + '分析报告.txt'):#判断文件是否存在
+            obj_file = Surveyfile.objects.filter(Q(said__idsurveyattribute=i.idsurveyattribute),
+                                                Q(filepath__contains='.cpf') |
+                                                Q(filepath__contains='.svy') |
+                                                Q(filepath__contains='.dc'))
+            for j in obj_file:
+                # 将文件路径简化
+                j.filepath = j.filepath.split('\\')[7:]
+                str = ' / '
+                j.filepath = str.join(j.filepath)
+                # 完成状态映射
+                if j.said.isanalysed == 1:
+                    j.said.isanalysed = '已分析'
+                elif j.said.isanalysed == 0:
+                    j.said.isanalysed = '未分析'
+                else:
+                    j.said.isanalysed = '文件不全'
+                # 将检查数据写成文件
+                all_check = CheckInformation.objects.filter(source__idsurveyattribute=i.idsurveyattribute). \
+                    order_by("-log_level")
+                with open(file_path2 + '分析报告.txt', 'w') as f:
+                    for m in all_check:
+                        f.write(m.source.pjid + ' ' + m.source.pjname + '  数据类型：' + m.source.filetype + '  状态：'+ j.said.isanalysed+ '\n')
+                        f.write(j.filepath + '\n')
+                        for n in all_check:
+                            f.write(n.log_level + ' : ' + n.check_category  + '   ' + n.information+ '   ' + n.detail + '   ' + '\n')
+                        break
+
+        # 生成点位数据文件
+        if not os.path.isfile(file_path2 + '点位数据.txt'):  # 判断文件是否存在
+            file_points = Points2018.objects.filter(source__idsurveyattribute=i.idsurveyattribute)
+            with open(file_path2 + '点位数据.txt', 'w') as f:
+                for j in file_points:
+                    f.write(j.wkbgeometry + ',' + j.source.pjid)
+                    f.write('\n')
+
+        # 生成外业文件
+        all_files = Surveyfile.objects.filter(said__idsurveyattribute=i.idsurveyattribute)
         # 将外业文件写出来
-        for i in all_files:
-            path = os.path.split(i.filepath)
-            file_name =path[1]  # 文件名
-            new_file_path = os.path.join(file_path, '外业文件\\')  # 下载文件的绝对路径
-            if not os.path.exists(new_file_path):  # 判断文件夹是否存在
-                os.makedirs(new_file_path)
-            with open(new_file_path+file_name, 'wb') as f:
-                f.write(bytes(i.content))
-        name=os.path.join(file_path, '外业原始文件.zip')
-        zip_ya(new_file_path,name)
-        file_name='外业原始文件.zip'
-        new_file_path = os.path.join(file_path, '外业原始文件.zip')  # 下载文件的绝对路径
+        for j in all_files:
+            path = os.path.split(j.filepath)
+            file_name = path[1]  # 文件名
+            if not os.path.isfile(file_path1 + file_name):  # 判断文件是否存在
+                with open(file_path1 + file_name, 'wb') as f:
+                    f.write(bytes(j.content))
+
+    # 判断type值
+    if flag=='1':
+        file_name = "分析报告.txt"
+        new_file_path = os.path.join(file_path2, file_name)
+    elif flag=='2':
+        file_name = "点位数据.txt"
+        new_file_path = os.path.join(file_path2, file_name)
+    elif flag=='3':
+        name = os.path.join(file_path1, '外业原始文件.zip')#压缩后文件的绝对路径
+        zip_ya(file_path1, name)
+        file_name = '外业原始文件.zip'#压缩文件名
+        new_file_path = os.path.join(file_path1, '外业原始文件.zip')#下载文件的绝对路径
+    else:
+        zip_ya(file_path2, zip_name)
+        file_name = '所有文件.zip'
+        new_file_path = zip_name
 
     if not os.path.isfile(new_file_path):  # 判断下载文件是否存在
         return HttpResponse("Sorry but Not Found the File")

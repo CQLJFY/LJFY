@@ -8,7 +8,7 @@ urlpatterns = [
     # 项目数据
     path('data/', pj_data.as_view(), name='pj_data'),
     # 下载文件
-    re_path('download/(?P<idsurveyattribute>\d+)/(?P<type>\d+)/',files_download,name='download'),
+    re_path('download/(?P<idsurveyattribute>\d+)/(?P<flag>\d+)/',files_download,name='download'),
 
 
 ]
