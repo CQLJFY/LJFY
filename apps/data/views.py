@@ -98,7 +98,7 @@ def files_download(request,idsurveyattribute,type):
                                     Q(filepath__contains='.dc'))
     for i in obj:
         file_path = "F:\\LJFY\\files_download\\" + i.said.pjid + '\\' + i.said.surveyperson + '\\' \
-                        + i.said.filetype + '\\'
+                        + i.said.filetype +'\\'+idsurveyattribute+ '\\'
         if not os.path.exists(file_path):  # 判断文件夹是否存在
             os.makedirs(file_path)  # 创建文件
     if type=='1':
