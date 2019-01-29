@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block custom_bread %}
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="{% url 'index' %}">首页</a>
+        </li>
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="{% url 'pj:data' %}">项目数据</a>
+        </li>
+
+        <li class="active">
+            保存修改
+        </li>
+    </ul>
+{% endblock %}
+
+{% block page-content %}
+
+{% endblock %}

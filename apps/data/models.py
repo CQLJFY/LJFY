@@ -1,5 +1,5 @@
 from django.db import models
-# from django.contrib.gis.db import models as geo_models
+from django.contrib.gis.db import models
 
 # Create your models here.
 
@@ -80,11 +80,10 @@ class CheckInformation(models.Model):
 
 class Points2018(models.Model):
     source = models.ForeignKey('Surveyattribute', models.DO_NOTHING)
-    wkbgeometry = models.TextField(verbose_name='坐标')  # This field type is a guess.
+    wkbgeometry = models.PointField(verbose_name='坐标',srid=0, dim=3)
     code = models.CharField(verbose_name='编码',max_length=15, blank=True, null=True)
     observe_time = models.DateTimeField(verbose_name='测量时间',blank=True, null=True)
     geometry_id = models.AutoField(verbose_name='ID',primary_key=True)
-    sdfd=models.GenericIPAddressField
 
     class Meta:
         managed = False

@@ -1,0 +1,232 @@
+2019/01/29 16:41:13 Starting OSGeo4W install, version 2.579
+2019/01/29 16:41:13 using locales .936
+2019/01/29 16:41:13 io_stream_cygfile: fopen(/etc/setup/setup.rc) failed 2 No such file or directory
+2019/01/29 16:41:13 Current Directory: C:\Users\小胖子\AppData\Local\Temp
+2019/01/29 16:41:13 Root Directory: C:\OSGeo4W64
+2019/01/29 16:41:13 Could not open service McShield for query, start and stop. McAfee may not be installed, or we don't have access.
+2019/01/29 16:41:19 root: C:\OSGeo4W64
+2019/01/29 16:41:19 Selected local directory: C:\Users\小胖子\AppData\Local\Temp
+2019/01/29 16:41:19 Menu name: OSGeo4W
+2019/01/29 16:41:19 net: Direct
+2019/01/29 16:41:40 source: network install
+2019/01/29 16:41:47 root: C:\OSGeo4W64
+2019/01/29 16:41:49 Selected local directory: C:\Users\小胖子\AppData\Local\Temp
+2019/01/29 16:41:49 Menu name: OSGeo4W
+2019/01/29 16:41:52 net: Direct
+2019/01/29 16:42:03 site: http://download.osgeo.org/osgeo4w/
+2019/01/29 16:42:05 io_stream_cygfile: fopen(/etc/setup/installed.db) failed 2 No such file or directory
+2019/01/29 16:42:05 io_stream_cygfile: fopen(/etc/setup/timestamp) failed 2 No such file or directory
+2019/01/29 16:42:11 Adding required dependency boost-libs: Selecting version 1.56.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency curl: Selecting version 7.60.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency expat: Selecting version 2.1.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency freexl: Selecting version 1.0.2-1 for installation.
+2019/01/29 16:42:11 Adding required dependency gdal203dll: Selecting version 2.3.2-1 for installation.
+2019/01/29 16:42:11 Adding required dependency geos: Selecting version 3.7.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency hdf4: Selecting version 4.2.9-1 for installation.
+2019/01/29 16:42:11 Adding required dependency hdf5: Selecting version 1.8.11-2 for installation.
+2019/01/29 16:42:11 Adding required dependency iconv: Selecting version 1.14-1 for installation.
+2019/01/29 16:42:11 Adding required dependency iconv-vc14: Selecting version 1.15-1 for installation.
+2019/01/29 16:42:11 Adding required dependency libjpeg: Selecting version 6b-4 for installation.
+2019/01/29 16:42:11 Adding required dependency libjpeg12: Selecting version 6b-4 for installation.
+2019/01/29 16:42:11 Adding required dependency libkml: Selecting version 1.3.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency liblwgeom: Selecting version 2.5.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency libmysql: Selecting version 6.1.9-1 for installation.
+2019/01/29 16:42:11 Adding required dependency libpng: Selecting version 1.6.3-1 for installation.
+2019/01/29 16:42:11 Adding required dependency libpng-vc14: Selecting version 1.6.29-1 for installation.
+2019/01/29 16:42:11 Adding required dependency libpq: Selecting version 9.2.4-1 for installation.
+2019/01/29 16:42:11 Adding required dependency libtiff: Selecting version 4.0.8-1 for installation.
+2019/01/29 16:42:11 Adding required dependency libxml2: Selecting version 2.9.1-1 for installation.
+2019/01/29 16:42:11 Adding required dependency msvc2015: Selecting version 1.0.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency msvcrt: Selecting version 1.0.3-1 for installation.
+2019/01/29 16:42:11 Adding required dependency msvcrt2008: Selecting version 1.0.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency msvcrt2010: Selecting version 1.0.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency msvcrt2012: Selecting version 1.0.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency msvcrt2015: Selecting version 1.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency netcdf: Selecting version 4.4.1.1-1 for installation.
+2019/01/29 16:42:11 Adding required dependency ogdi: Selecting version 3.2.1-2 for installation.
+2019/01/29 16:42:11 Adding required dependency openjpeg: Selecting version 2.3.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency openssl: Selecting version 1.0.2j-1 for installation.
+2019/01/29 16:42:11 Adding required dependency proj: Selecting version 5.2.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency proj-beta2007: Selecting version 1.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency proj-datumgrid: Selecting version 1.8-1 for installation.
+2019/01/29 16:42:11 Adding required dependency proj-hpgn: Selecting version 1.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency proj4dll: Selecting version 4.9.3-2 for installation.
+2019/01/29 16:42:11 Adding required dependency setup: Selecting version 1.0.7-16 for installation.
+2019/01/29 16:42:11 Adding required dependency shell: Selecting version 1.0.2-4 for installation.
+2019/01/29 16:42:11 Adding required dependency spatialite: Selecting version 4.3.0a-1 for installation.
+2019/01/29 16:42:11 Adding required dependency sqlite3: Selecting version 3.26.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency szip: Selecting version 2.1-1 for installation.
+2019/01/29 16:42:11 Adding required dependency xerces-c: Selecting version 3.2.0-1 for installation.
+2019/01/29 16:42:11 Adding required dependency xz: Selecting version 5.2.3-1 for installation.
+2019/01/29 16:42:11 Adding required dependency zlib: Selecting version 1.2.8-1 for installation.
+2019/01/29 16:42:11 Adding required dependency zstd: Selecting version 1.3.2-1 for installation.
+2019/01/29 16:42:12 License file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/szip/szip-2.1-1.txt successfully loaded.
+2019/01/29 16:45:22 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/boost/boost-libs/boost-libs-1.56.0-1.tar.bz2
+2019/01/29 16:45:49 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/curl/curl-7.60.0-1.tar.bz2
+2019/01/29 16:45:51 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/expat/expat-2.1.0-1.tar.bz2
+2019/01/29 16:45:53 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/freexl/freexl-1.0.2-1.tar.bz2
+2019/01/29 16:49:17 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/gdal/gdal-2.4.0-4.tar.bz2
+2019/01/29 16:51:53 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/gdal/gdal203dll/gdal203dll-2.3.2-1.tar.bz2
+2019/01/29 16:52:13 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/geos/geos-3.7.0-1.tar.bz2
+2019/01/29 16:52:24 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/hdf4/hdf4-4.2.9-1.tar.bz2
+2019/01/29 16:52:50 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/hdf5/hdf5-1.8.11-2.tar.bz2
+2019/01/29 16:53:06 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/iconv/iconv-1.14-1.tar.bz2
+2019/01/29 16:53:15 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/iconv-vc14/iconv-vc14-1.15-1.tar.bz2
+2019/01/29 16:53:17 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libjpeg/libjpeg/libjpeg-6b-4.tar.bz2
+2019/01/29 16:53:20 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libjpeg/libjpeg12/libjpeg12-6b-4.tar.bz2
+2019/01/29 16:54:05 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libkml/libkml-1.3.0-1.tar.bz2
+2019/01/29 16:54:15 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/liblwgeom/liblwgeom-2.5.0-1.tar.bz2
+2019/01/29 16:54:28 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libmysql/libmysql-6.1.9-1.tar.bz2
+2019/01/29 16:54:32 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libpng/libpng-1.6.3-1.tar.bz2
+2019/01/29 16:54:35 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libpng-vc14/libpng-vc14-1.6.29-1.tar.bz2
+2019/01/29 16:54:43 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libpq/libpq-9.2.4-1.tar.bz2
+2019/01/29 16:54:56 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libtiff/libtiff-4.0.8-1.tar.bz2
+2019/01/29 16:55:14 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libxml2/libxml2-2.9.1-1.tar.bz2
+2019/01/29 16:55:15 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/_obsolete/msvc2015/msvc2015-1.0.0-1.tar.bz2
+2019/01/29 16:55:27 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/msvcrt/msvcrt-1.0.3-1.tar.bz2
+2019/01/29 16:57:01 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/msvcrt/msvcrt2008/msvcrt2008-1.0.0-1.tar.bz2
+2019/01/29 16:58:10 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/msvcrt/msvcrt2010/msvcrt2010-1.0.0-1.tar.bz2
+2019/01/29 16:58:21 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/msvcrt/msvcrt2012/msvcrt2012-1.0.0-1.tar.bz2
+2019/01/29 17:02:31 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/msvcrt/msvcrt2015/msvcrt2015-1.0-1.tar.bz2
+2019/01/29 17:02:41 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/netcdf/netcdf-4.4.1.1-1.tar.bz2
+2019/01/29 17:02:47 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/ogdi/ogdi-3.2.1-2.tar.bz2
+2019/01/29 17:02:51 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/openjpeg/openjpeg-2.3.0-1.tar.bz2
+2019/01/29 17:03:11 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/openssl/openssl-1.0.2j-1.tar.bz2
+2019/01/29 17:03:18 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/proj/proj-5.2.0-1.tar.bz2
+2019/01/29 17:03:20 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/proj/proj-beta2007/proj-beta2007-1.0-1.tar.bz2
+2019/01/29 17:06:47 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/proj/proj-datumgrid/proj-datumgrid-1.8-1.tar.bz2
+2019/01/29 17:06:57 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/proj/proj-hpgn/proj-hpgn-1.0-1.tar.bz2
+2019/01/29 17:07:02 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/proj/proj4dll/proj4dll-4.9.3-2.tar.bz2
+2019/01/29 17:07:13 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/setup/setup-1.0.7-16.tar.bz2
+2019/01/29 17:32:49 Ending OSGeo4W install
+2019/01/29 17:33:00 Starting OSGeo4W install, version 2.579
+2019/01/29 17:33:00 using locales .936
+2019/01/29 17:33:00 Current Directory: C:\Users\小胖子\AppData\Local\Temp
+2019/01/29 17:33:00 Root Directory: C:\OSGeo4W64
+2019/01/29 17:33:00 Could not open service McShield for query, start and stop. McAfee may not be installed, or we don't have access.
+2019/01/29 17:33:08 source: download
+2019/01/29 17:33:13 source: from cwd
+2019/01/29 17:33:18 root: C:\OSGeo4W64
+2019/01/29 17:33:20 Selected local directory: C:\Users\小胖子\AppData\Local\Temp
+2019/01/29 17:33:20 Menu name: OSGeo4W
+2019/01/29 17:33:20 io_stream_cygfile: fopen(/etc/setup/installed.db) failed 2 No such file or directory
+2019/01/29 17:33:26 error: Environment variable 'PATH' length exceeds 1024; running with %WINDIR%\system32;%WINDIR%;%WINDIR%\wbem
+2019/01/29 17:33:28 note: Nothing needed to be installed
+2019/01/29 17:33:28 Ending OSGeo4W install
+2019/01/29 17:33:36 Starting OSGeo4W install, version 2.579
+2019/01/29 17:33:36 using locales .936
+2019/01/29 17:33:36 Current Directory: C:\Users\小胖子\AppData\Local\Temp
+2019/01/29 17:33:36 Root Directory: C:\OSGeo4W64
+2019/01/29 17:33:36 Could not open service McShield for query, start and stop. McAfee may not be installed, or we don't have access.
+2019/01/29 17:33:40 root: C:\OSGeo4W64
+2019/01/29 17:33:40 Selected local directory: C:\Users\小胖子\AppData\Local\Temp
+2019/01/29 17:33:40 Menu name: OSGeo4W
+2019/01/29 17:33:40 net: Direct
+2019/01/29 17:33:41 site: http://download.osgeo.org/osgeo4w/
+2019/01/29 17:33:45 Adding required dependency boost-libs: Selecting version 1.56.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency curl: Selecting version 7.60.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency expat: Selecting version 2.1.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency freexl: Selecting version 1.0.2-1 for installation.
+2019/01/29 17:33:45 Adding required dependency gdal203dll: Selecting version 2.3.2-1 for installation.
+2019/01/29 17:33:45 Adding required dependency geos: Selecting version 3.7.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency hdf4: Selecting version 4.2.9-1 for installation.
+2019/01/29 17:33:45 Adding required dependency hdf5: Selecting version 1.8.11-2 for installation.
+2019/01/29 17:33:45 Adding required dependency iconv: Selecting version 1.14-1 for installation.
+2019/01/29 17:33:45 Adding required dependency iconv-vc14: Selecting version 1.15-1 for installation.
+2019/01/29 17:33:45 Adding required dependency libjpeg: Selecting version 6b-4 for installation.
+2019/01/29 17:33:45 Adding required dependency libjpeg12: Selecting version 6b-4 for installation.
+2019/01/29 17:33:45 Adding required dependency libkml: Selecting version 1.3.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency liblwgeom: Selecting version 2.5.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency libmysql: Selecting version 6.1.9-1 for installation.
+2019/01/29 17:33:45 Adding required dependency libpng: Selecting version 1.6.3-1 for installation.
+2019/01/29 17:33:45 Adding required dependency libpng-vc14: Selecting version 1.6.29-1 for installation.
+2019/01/29 17:33:45 Adding required dependency libpq: Selecting version 9.2.4-1 for installation.
+2019/01/29 17:33:45 Adding required dependency libtiff: Selecting version 4.0.8-1 for installation.
+2019/01/29 17:33:45 Adding required dependency libxml2: Selecting version 2.9.1-1 for installation.
+2019/01/29 17:33:45 Adding required dependency msvc2015: Selecting version 1.0.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency msvcrt: Selecting version 1.0.3-1 for installation.
+2019/01/29 17:33:45 Adding required dependency msvcrt2008: Selecting version 1.0.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency msvcrt2010: Selecting version 1.0.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency msvcrt2012: Selecting version 1.0.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency msvcrt2015: Selecting version 1.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency netcdf: Selecting version 4.4.1.1-1 for installation.
+2019/01/29 17:33:45 Adding required dependency ogdi: Selecting version 3.2.1-2 for installation.
+2019/01/29 17:33:45 Adding required dependency openjpeg: Selecting version 2.3.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency openssl: Selecting version 1.0.2j-1 for installation.
+2019/01/29 17:33:45 Adding required dependency proj: Selecting version 5.2.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency proj-beta2007: Selecting version 1.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency proj-datumgrid: Selecting version 1.8-1 for installation.
+2019/01/29 17:33:45 Adding required dependency proj-hpgn: Selecting version 1.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency proj4dll: Selecting version 4.9.3-2 for installation.
+2019/01/29 17:33:45 Adding required dependency setup: Selecting version 1.0.7-16 for installation.
+2019/01/29 17:33:45 Adding required dependency shell: Selecting version 1.0.2-4 for installation.
+2019/01/29 17:33:45 Adding required dependency spatialite: Selecting version 4.3.0a-1 for installation.
+2019/01/29 17:33:45 Adding required dependency sqlite3: Selecting version 3.26.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency szip: Selecting version 2.1-1 for installation.
+2019/01/29 17:33:45 Adding required dependency xerces-c: Selecting version 3.2.0-1 for installation.
+2019/01/29 17:33:45 Adding required dependency xz: Selecting version 5.2.3-1 for installation.
+2019/01/29 17:33:45 Adding required dependency zlib: Selecting version 1.2.8-1 for installation.
+2019/01/29 17:33:45 Adding required dependency zstd: Selecting version 1.3.2-1 for installation.
+2019/01/29 17:33:46 License file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/szip/szip-2.1-1.txt successfully loaded.
+2019/01/29 17:33:50 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/shell/shell-1.0.2-4.tar.bz2
+2019/01/29 17:37:46 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/spatialite/spatialite-4.3.0a-1.tar.bz2
+2019/01/29 17:38:10 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/sqlite3/sqlite3-3.26.0-1.tar.bz2
+2019/01/29 17:38:12 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/szip/szip-2.1-1.tar.bz2
+2019/01/29 17:38:33 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/xerces-c/xerces-c-3.2.0-1.tar.bz2
+2019/01/29 17:38:36 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/xz/xz-5.2.3-1.tar.bz2
+2019/01/29 17:38:40 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/zlib/zlib-1.2.8-1.tar.bz2
+2019/01/29 17:38:44 Downloaded C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/zstd/zstd-1.3.2-1.tar.bz2
+2019/01/29 17:38:44 error: Environment variable 'PATH' length exceeds 1024; running with %WINDIR%\system32;%WINDIR%;%WINDIR%\wbem
+2019/01/29 17:38:46 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/boost/boost-libs/boost-libs-1.56.0-1.tar.bz2
+2019/01/29 17:38:47 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/curl/curl-7.60.0-1.tar.bz2
+2019/01/29 17:38:48 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/expat/expat-2.1.0-1.tar.bz2
+2019/01/29 17:38:48 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/freexl/freexl-1.0.2-1.tar.bz2
+2019/01/29 17:38:48 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/gdal/gdal-2.4.0-4.tar.bz2
+2019/01/29 17:38:52 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/gdal/gdal203dll/gdal203dll-2.3.2-1.tar.bz2
+2019/01/29 17:38:54 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/geos/geos-3.7.0-1.tar.bz2
+2019/01/29 17:38:54 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/hdf4/hdf4-4.2.9-1.tar.bz2
+2019/01/29 17:38:55 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/hdf5/hdf5-1.8.11-2.tar.bz2
+2019/01/29 17:38:56 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/iconv/iconv-1.14-1.tar.bz2
+2019/01/29 17:38:56 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/iconv-vc14/iconv-vc14-1.15-1.tar.bz2
+2019/01/29 17:38:56 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libjpeg/libjpeg/libjpeg-6b-4.tar.bz2
+2019/01/29 17:38:56 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libjpeg/libjpeg12/libjpeg12-6b-4.tar.bz2
+2019/01/29 17:38:56 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libkml/libkml-1.3.0-1.tar.bz2
+2019/01/29 17:38:58 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/liblwgeom/liblwgeom-2.5.0-1.tar.bz2
+2019/01/29 17:38:58 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libmysql/libmysql-6.1.9-1.tar.bz2
+2019/01/29 17:38:58 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libpng/libpng-1.6.3-1.tar.bz2
+2019/01/29 17:38:58 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libpng-vc14/libpng-vc14-1.6.29-1.tar.bz2
+2019/01/29 17:38:58 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libpq/libpq-9.2.4-1.tar.bz2
+2019/01/29 17:38:59 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libtiff/libtiff-4.0.8-1.tar.bz2
+2019/01/29 17:38:59 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/libxml2/libxml2-2.9.1-1.tar.bz2
+2019/01/29 17:39:00 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/_obsolete/msvc2015/msvc2015-1.0.0-1.tar.bz2
+2019/01/29 17:39:00 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/msvcrt/msvcrt-1.0.3-1.tar.bz2
+2019/01/29 17:39:00 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/msvcrt/msvcrt2008/msvcrt2008-1.0.0-1.tar.bz2
+2019/01/29 17:39:00 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/msvcrt/msvcrt2010/msvcrt2010-1.0.0-1.tar.bz2
+2019/01/29 17:39:01 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/msvcrt/msvcrt2012/msvcrt2012-1.0.0-1.tar.bz2
+2019/01/29 17:39:01 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/msvcrt/msvcrt2015/msvcrt2015-1.0-1.tar.bz2
+2019/01/29 17:39:02 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/netcdf/netcdf-4.4.1.1-1.tar.bz2
+2019/01/29 17:39:03 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/ogdi/ogdi-3.2.1-2.tar.bz2
+2019/01/29 17:39:03 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/openjpeg/openjpeg-2.3.0-1.tar.bz2
+2019/01/29 17:39:03 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/openssl/openssl-1.0.2j-1.tar.bz2
+2019/01/29 17:39:03 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/proj/proj-5.2.0-1.tar.bz2
+2019/01/29 17:39:03 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/proj/proj-beta2007/proj-beta2007-1.0-1.tar.bz2
+2019/01/29 17:39:03 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/proj/proj-datumgrid/proj-datumgrid-1.8-1.tar.bz2
+2019/01/29 17:39:04 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/proj/proj-hpgn/proj-hpgn-1.0-1.tar.bz2
+2019/01/29 17:39:04 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/proj/proj4dll/proj4dll-4.9.3-2.tar.bz2
+2019/01/29 17:39:05 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/setup/setup-1.0.7-16.tar.bz2
+2019/01/29 17:39:05 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/shell/shell-1.0.2-4.tar.bz2
+2019/01/29 17:39:05 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/spatialite/spatialite-4.3.0a-1.tar.bz2
+2019/01/29 17:39:06 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/sqlite3/sqlite3-3.26.0-1.tar.bz2
+2019/01/29 17:39:06 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/szip/szip-2.1-1.tar.bz2
+2019/01/29 17:39:07 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/xerces-c/xerces-c-3.2.0-1.tar.bz2
+2019/01/29 17:39:07 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/xz/xz-5.2.3-1.tar.bz2
+2019/01/29 17:39:07 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/zlib/zlib-1.2.8-1.tar.bz2
+2019/01/29 17:39:07 Extracting from file://C:\Users\小胖子\AppData\Local\Temp/http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/x86_64/release/zstd/zstd-1.3.2-1.tar.bz2
+2019/01/29 17:39:07 running: cmd.exe /c "C:\OSGeo4W64\\etc\postinstall\msvcrt-2008.bat"
+2019/01/29 17:39:17 running: cmd.exe /c "C:\OSGeo4W64\\etc\postinstall\msvcrt-2010.bat"
+2019/01/29 17:39:22 running: cmd.exe /c "C:\OSGeo4W64\\etc\postinstall\setup.bat"
+2019/01/29 17:39:23 running: cmd.exe /c "C:\OSGeo4W64\\etc\postinstall\shell.bat"
+2019/01/29 17:39:24 running: cmd.exe /c "C:\OSGeo4W64\\etc\postinstall\openssl.bat"
+2019/01/29 17:39:24 running: cmd.exe /c "C:\OSGeo4W64\\etc\postinstall\msvcrt2015.bat"
+2019/01/29 17:40:14 note: Installation Complete
+2019/01/29 17:40:14 Ending OSGeo4W install

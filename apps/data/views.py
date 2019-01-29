@@ -5,6 +5,7 @@ from django.db.models import Q
 import os
 from django.views.generic.base import View
 from django.http import StreamingHttpResponse,HttpResponse
+from django.utils.http import urlquote
 
 from .models import Surveyattribute,Surveyfile,CheckInformation,Points2018
 from users.models import UserProfile
@@ -13,10 +14,10 @@ from .form import SurveypersonForm
 # Create your views here.
 
 class pj_data(View):
+    # print (os.path.abspath('.'))
     # 数据查询
     def get(self, request):
         search=request.GET.get("search","")
-        test=None
         if search:
             # 取出搜索工程的所有文件
             #  对权限进行判断
@@ -51,8 +52,17 @@ class pj_data(View):
             #     取出检查信息并合并
                 all_check = CheckInformation.objects.filter(source__idsurveyattribute=i.said.idsurveyattribute).\
                     order_by("-log_level")
+                # 对检查信息等级进行映射
+                for j in all_check:
+                    if j.log_level=='error':
+                        j.log_level='错误'
+                    elif j.log_level=='warn':
+                        j.log_level='警告'
+                    else:
+                        j.log_level='信息'
+
                 level_list=[check.log_level for check in all_check]
-                if 'warn' in level_list:
+                if '错误' in level_list:
                     flag=1
                 else:
                     flag=None
@@ -66,12 +76,13 @@ class pj_data(View):
             # 去重
             all_person = set(all_person)
 
+
         else:
             title_pj=None
             list=[]
             all_person=None
 
-        return render(request, 'test2.html', {
+        return render(request, 'data_search.html', {
             "title_pj":title_pj,
             "list":list,
             "all_person":all_person,
@@ -93,22 +104,32 @@ def files_download(request,idsurveyattribute,flag):
     zip_name=''
     file_path1=''# 外业文件夹的绝对路径
     file_path2 = ''#检查报告文件夹的绝对路径
+    file_path3 = ''
     test=Surveyattribute.objects.filter(idsurveyattribute=idsurveyattribute)
     a=''
     for i in test:
         a=i.pjid
     obj=Surveyattribute.objects.filter(pjid=a)
     for i in obj:
-        file_path1 = "F:\\LJFY\\files_download\\" + i.pjid + '\\' + i.surveyperson + '\\' \
-                    + i.filetype + '\\' + repr(i.idsurveyattribute) + '\\'+'外业文件'+'\\'
-        file_path2="F:\\LJFY\\files_download\\" + i.pjid + '\\' + i.surveyperson + '\\' \
-                    + i.filetype + '\\' + repr(i.idsurveyattribute) + '\\'+'检查报告'+'\\'
-        zip_name="F:\\LJFY\\files_download\\ZIP\\"+ i.pjid + '.zip'
-        zip_path="F:\\LJFY\\files_download\\ZIP\\"
+        # 外业文件夹路径
+        file_path1 = os.path.abspath('.')+"\\files_download\\" + i.pjid + '\\' + i.surveyperson + '\\' \
+                    + i.filetype+ repr(i.idsurveyattribute) + '\\'+'外业文件'+'\\'
+        # 检查报告文件夹路径
+        file_path2=os.path.abspath('.')+"\\files_download\\" + i.pjid + '\\' + i.surveyperson + '\\' \
+                    + i.filetype+ repr(i.idsurveyattribute) + '\\'+'检查报告'+'\\'
+        # 总的点位数据和分析报告存放路径
+        file_path3 = os.path.abspath('.') + "\\files_download\\" + i.pjid + '\\'
+        all_name = os.path.abspath('.') + "\\files_download\\" + i.pjid + '\\' + i.pjid
+        # 所有点位数据和分析报告压缩后工程文件名
+        zip_name=os.path.abspath('.')+"\\files_download\\ZIP\\"+ i.pjid + '.zip'
+        # 存放全部压缩文件的路径
+        zip_path=os.path.abspath('.')+"\\files_download\\ZIP\\"
         if not os.path.exists(file_path1):  # 判断文件夹是否存在
             os.makedirs(file_path1)  # 创建文件夹
         if not os.path.exists(file_path2):  # 判断文件夹是否存在
             os.makedirs(file_path2)  # 创建文件夹
+        if not os.path.exists(file_path3):  # 判断文件夹是否存在
+            os.makedirs(file_path3)  # 创建文件夹
         if not os.path.exists(zip_path):  # 判断文件夹是否存在
             os.makedirs(zip_path)  # 创建文件夹
 
@@ -133,7 +154,22 @@ def files_download(request,idsurveyattribute,flag):
                 # 将检查数据写成文件
                 all_check = CheckInformation.objects.filter(source__idsurveyattribute=i.idsurveyattribute). \
                     order_by("-log_level")
+                for j in all_check:
+                    if j.log_level=='error':
+                        j.log_level='错误'
+                    elif j.log_level=='warn':
+                        j.log_level='警告'
+                    else:
+                        j.log_level='信息'
                 with open(file_path2 + '分析报告.txt', 'w') as f:
+                    for m in all_check:
+                        f.write(m.source.pjid + ' ' + m.source.pjname + '  数据类型：' + m.source.filetype + '  状态：'+ j.said.isanalysed+ '\n')
+                        f.write(j.filepath + '\n')
+                        for n in all_check:
+                            f.write(n.log_level + ' : ' + n.check_category  + '   ' + n.information+ '   ' + n.detail + '   ' + '\n')
+                        f.write('\n')
+                        break
+                with open(all_name + '总分析报告.txt', 'a') as f:
                     for m in all_check:
                         f.write(m.source.pjid + ' ' + m.source.pjname + '  数据类型：' + m.source.filetype + '  状态：'+ j.said.isanalysed+ '\n')
                         f.write(j.filepath + '\n')
@@ -146,8 +182,12 @@ def files_download(request,idsurveyattribute,flag):
             file_points = Points2018.objects.filter(source__idsurveyattribute=i.idsurveyattribute)
             with open(file_path2 + '点位数据.txt', 'w') as f:
                 for j in file_points:
-                    f.write(j.wkbgeometry + ',' + j.source.pjid)
+                    f.write( ',' + j.source.pjid)
                     f.write('\n')
+            with open(all_name + '总点位数据.txt', 'w') as f:
+                for j in file_points:
+                    f.write( ',' + j.source.pjid)
+                    f.write('\n\n\n')
 
         # 生成外业文件
         all_files = Surveyfile.objects.filter(said__idsurveyattribute=i.idsurveyattribute)
@@ -169,11 +209,9 @@ def files_download(request,idsurveyattribute,flag):
     elif flag=='3':
         name = os.path.join(file_path1, '外业原始文件.zip')#压缩后文件的绝对路径
         zip_ya(file_path1, name)
-        file_name = '外业原始文件.zip'#压缩文件名
         new_file_path = os.path.join(file_path1, '外业原始文件.zip')#下载文件的绝对路径
     else:
-        zip_ya(file_path2, zip_name)
-        file_name = '所有文件.zip'
+        zip_ya(file_path3, zip_name)
         new_file_path = zip_name
 
     if not os.path.isfile(new_file_path):  # 判断下载文件是否存在
@@ -194,7 +232,20 @@ def files_download(request,idsurveyattribute,flag):
         # 以流的形式下载文件,这样可以实现任意格式的文件下载
         response['Content-Type'] = 'application/octet-stream'
         # Content-Disposition就是当用户想把请求所得的内容存为一个文件的时候提供一个默认的文件名
-        response['Content-Disposition'] = 'attachment;filename="{}"'.format(file_name)
+        # 默认文件名不含中文
+        # response['Content-Disposition'] = 'attachment;filename="{0}"'.format(file_name)
+        # 默认文件名含中文
+        response['Content-Disposition'] = 'attachment;filename="%s"' % (urlquote(new_file_path))
+
     except:
         return HttpResponse("Sorry but Not Found the File")
     return response
+
+
+class ChangeSurveyperson(View):
+    '''大组长和管理员可以修改测量员'''
+    def get(self,request,idsurveyattribute,new_person):
+        pass
+        return render(request,'new_person.html',{
+
+        })

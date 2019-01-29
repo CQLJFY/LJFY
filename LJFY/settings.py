@@ -18,6 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
+GDAL_LIBRARY_PATH = os.path.join(BASE_DIR, 'OSGeo4W64\\bin\\gdal202.dll')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -30,7 +31,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,13 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django.contrib.gis',
     # my apps
     'xadmin',
     'crispy_forms',
     'reversion',
     'users',
     'data',
+    'django.contrib.gis'
 ]
 
 AUTH_USER_MODEL="users.UserProfile"
@@ -88,7 +88,8 @@ WSGI_APPLICATION = 'LJFY.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':'cqkcy',
         'USER':'postgres',
         'PASSWORD':'1234',
