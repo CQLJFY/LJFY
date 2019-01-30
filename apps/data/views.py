@@ -82,7 +82,7 @@ class pj_data(View):
             list=[]
             all_person=None
 
-        return render(request, 'data_search.html', {
+        return render(request, 'test2.html', {
             "title_pj":title_pj,
             "list":list,
             "all_person":all_person,
@@ -154,13 +154,13 @@ def files_download(request,idsurveyattribute,flag):
                 # 将检查数据写成文件
                 all_check = CheckInformation.objects.filter(source__idsurveyattribute=i.idsurveyattribute). \
                     order_by("-log_level")
-                for j in all_check:
-                    if j.log_level=='error':
-                        j.log_level='错误'
-                    elif j.log_level=='warn':
-                        j.log_level='警告'
+                for n in all_check:
+                    if n.log_level=='error':
+                        n.log_level='错误'
+                    elif n.log_level=='warn':
+                        n.log_level='警告'
                     else:
-                        j.log_level='信息'
+                        n.log_level='信息'
                 with open(file_path2 + '分析报告.txt', 'w') as f:
                     for m in all_check:
                         f.write(m.source.pjid + ' ' + m.source.pjname + '  数据类型：' + m.source.filetype + '  状态：'+ j.said.isanalysed+ '\n')
@@ -175,6 +175,7 @@ def files_download(request,idsurveyattribute,flag):
                         f.write(j.filepath + '\n')
                         for n in all_check:
                             f.write(n.log_level + ' : ' + n.check_category  + '   ' + n.information+ '   ' + n.detail + '   ' + '\n')
+                        f.write('\n')
                         break
 
         # 生成点位数据文件
@@ -182,12 +183,14 @@ def files_download(request,idsurveyattribute,flag):
             file_points = Points2018.objects.filter(source__idsurveyattribute=i.idsurveyattribute)
             with open(file_path2 + '点位数据.txt', 'w') as f:
                 for j in file_points:
-                    f.write( ',' + j.source.pjid)
+                    # print(j.wkbgeometry)
+                    # print(type(j.wkbgeometry))
+                    # f.write( j.wkbgeometry+',' + j.source.pjid)
                     f.write('\n')
             with open(all_name + '总点位数据.txt', 'w') as f:
                 for j in file_points:
                     f.write( ',' + j.source.pjid)
-                    f.write('\n\n\n')
+                    f.write('\n')
 
         # 生成外业文件
         all_files = Surveyfile.objects.filter(said__idsurveyattribute=i.idsurveyattribute)

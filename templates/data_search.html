@@ -127,23 +127,23 @@
                     <div>
                         {% if title_pj %}
                             <div>
+                            {% for title in title_pj %}
                                 <h4>
                                     工程编号：
                                     <lable>
-                                        {% for title in title_pj %}
                                         {{ title.pjid }}
-                                        {% endfor %}
                                     </lable>
                                 </h4>
 
                                 <h4>
                                     工程名称：
                                     <labele>
-                                        {% for title in title_pj %}
                                         {{ title.pjname }}
-                                        {% endfor %}
+
                                     </labele>
                                 </h4>
+
+                            {% endfor %}
                             </div>
                         {% endif %}
                     </div>
@@ -152,12 +152,13 @@
 							<div class="col-xs-12">
 								<div class="row">
 									<div class="col-xs-12">
-                                    {% for pj in list %}
+                                    {% for title in title_pj %}
                                         <div class="table-header">
                                             <p class="text-right">
-                                                <a class="btn btn-info btn-sm" href="{% url 'pj:download' pj.idsurveyattribute 4 %}">全部下载</a>
+                                                <a class="btn btn-info btn-sm" href="{% url 'pj:download' title.idsurveyattribute 4 %}">全部下载</a>
                                             </p>
-										</div>
+                                        </div>
+                                    {% endfor %}
 										<table id="simple-table" class="table  table-bordered table-hover">
 											<thead>
 												<tr>
@@ -176,12 +177,12 @@
 														状态
 													</th>
 													<th class="hidden-480">资料</th>
-
+                                                    <th></th>
 												</tr>
 											</thead>
 
 											<tbody>
-
+                                            {% for pj in list %}
 												<tr>
 													<td class="center">
 														<label class="pos-rel">
@@ -206,7 +207,7 @@
 													<td>
                                                         <form>
                                                             <div>
-                                                                <select class="chosen-select form-control" id="form-field-select-3">
+                                                                <select class="chosen-select form-control" id="form-field-select-3" name="person" runat="server">
                                                                     <option value="">{{ pj.surveyperson }}</option>
                                                                     {% for person in all_person %}
                                                                         <option value="{{ person }}">{{ person }}</option>
@@ -237,12 +238,15 @@
 {#															</button>#}
 														</div>
 													</td>
+                                                    <td>
+{#                                                        <button class="btn btn-xs btn-info" href="{% url 'pj:new_person' pj.idsurveyattribute pj.surveyperson %}">保存修改</button>#}
+                                                    </td>
                                                 </form>
 												</tr>
 {#填充质量记录#}
 												<tr {% if pj.flag %} class="detail-row collapse in"{% else %}class="detail-row"{% endif %}>
 {#                                                <tr class="detail-row">#}
-													<td colspan="7">
+													<td colspan="8">
 														<div class="table-detail">
 															<div class="row">
 																<div class="col-xs-12 col-sm-12">
@@ -273,9 +277,9 @@
 														</div>
 													</td>
 												</tr>
+                                            {% endfor %}
 											</tbody>
 										</table>
-                                    {% endfor %}
 									</div><!-- /.span -->
 								</div><!-- /.row -->
 
