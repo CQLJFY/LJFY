@@ -84,7 +84,7 @@ class pj_data(View):
             list=[]
             all_person=None
 
-        return render(request, 'test2.html', {
+        return render(request, 'data_search.html', {
             "title_pj":title_pj,
             "list":list,
             "all_person":all_person,
@@ -122,16 +122,12 @@ def files_download(request,idsurveyattribute,flag):
         # 总的点位数据和分析报告存放路径
         file_path3 = os.path.abspath('.') + "\\files_download\\" + i.pjid + '\\'
         all_name = os.path.abspath('.') + "\\files_download\\" + i.pjid + '\\' + i.pjid
-        # 存放全部压缩文件的路径
-        zip_path=os.path.abspath('.')+"\\files_download\\ZIP\\"
         if not os.path.exists(file_path1):  # 判断文件夹是否存在
             os.makedirs(file_path1)  # 创建文件夹
         if not os.path.exists(file_path2):  # 判断文件夹是否存在
             os.makedirs(file_path2)  # 创建文件夹
         if not os.path.exists(file_path3):  # 判断文件夹是否存在
             os.makedirs(file_path3)  # 创建文件夹
-        if not os.path.exists(zip_path):  # 判断文件夹是否存在
-            os.makedirs(zip_path)  # 创建文件夹
 
         # 生成分析报告
         if not os.path.isfile(file_path2 + '分析报告.txt'):#判断文件是否存在
@@ -203,6 +199,7 @@ def files_download(request,idsurveyattribute,flag):
                     f.write(bytes(j.content))
 
     # 判断type值
+    zip_path=''
     for i in test:
         # 外业文件夹路径
         file_path1 = os.path.abspath('.') + "\\files_download\\" + i.pjid + '\\' + i.surveyperson + '\\' \
@@ -213,7 +210,12 @@ def files_download(request,idsurveyattribute,flag):
         # 总的点位数据和分析报告存放路径
         file_path3 = os.path.abspath('.') + "\\files_download\\" + i.pjid + '\\'
         # 所有点位数据和分析报告压缩后工程文件名
-        zip_name = os.path.abspath('.') + "\\files_download\\ZIP\\" + i.pjid + '.zip'
+        zip_name = os.path.abspath('.') + "\\files_download\\ZIP\\" + i.pjid +'\\'+ i.pjid + '.zip'
+        # 各个工程压缩文件存放路径
+        zip_path=os.path.abspath('.') + "\\files_download\\ZIP\\" + i.pjid + '\\' + i.surveyperson + '\\' \
+                     + i.filetype + repr(i.idsurveyattribute) + '\\'
+        if not os.path.exists(zip_path):  # 判断文件夹是否存在
+            os.makedirs(zip_path)  # 创建文件夹
     if flag=='1':
         file_name = "分析报告.txt"
         new_file_path = os.path.join(file_path2, file_name)
@@ -221,9 +223,9 @@ def files_download(request,idsurveyattribute,flag):
         file_name = "点位数据.txt"
         new_file_path = os.path.join(file_path2, file_name)
     elif flag=='3':
-        name = os.path.join(file_path1, '外业原始文件.zip')#压缩后文件的绝对路径
+        name = os.path.join(zip_path, '外业原始文件.zip')#压缩后文件的绝对路径
         zip_ya(file_path1, name)
-        new_file_path = os.path.join(file_path1, '外业原始文件.zip')#下载文件的绝对路径
+        new_file_path = os.path.join(zip_path, '外业原始文件.zip')#下载文件的绝对路径
     else:
         zip_ya(file_path3, zip_name)
         new_file_path = zip_name
