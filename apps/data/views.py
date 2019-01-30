@@ -6,6 +6,8 @@ import os
 from django.views.generic.base import View
 from django.http import StreamingHttpResponse,HttpResponse
 from django.utils.http import urlquote
+from django.contrib.gis.geos import GEOSGeometry
+
 
 from .models import Surveyattribute,Surveyfile,CheckInformation,Points2018
 from users.models import UserProfile
@@ -120,8 +122,6 @@ def files_download(request,idsurveyattribute,flag):
         # 总的点位数据和分析报告存放路径
         file_path3 = os.path.abspath('.') + "\\files_download\\" + i.pjid + '\\'
         all_name = os.path.abspath('.') + "\\files_download\\" + i.pjid + '\\' + i.pjid
-        # 所有点位数据和分析报告压缩后工程文件名
-        zip_name=os.path.abspath('.')+"\\files_download\\ZIP\\"+ i.pjid + '.zip'
         # 存放全部压缩文件的路径
         zip_path=os.path.abspath('.')+"\\files_download\\ZIP\\"
         if not os.path.exists(file_path1):  # 判断文件夹是否存在
@@ -183,13 +183,13 @@ def files_download(request,idsurveyattribute,flag):
             file_points = Points2018.objects.filter(source__idsurveyattribute=i.idsurveyattribute)
             with open(file_path2 + '点位数据.txt', 'w') as f:
                 for j in file_points:
-                    # print(j.wkbgeometry)
-                    # print(type(j.wkbgeometry))
-                    # f.write( j.wkbgeometry+',' + j.source.pjid)
+                    f.write( repr(j.wkbgeometry.x)+',' +repr(j.wkbgeometry.y)+',' +repr(j.wkbgeometry.z)+','
+                             +i.surveyperson+','+repr(i.surveytime))
                     f.write('\n')
             with open(all_name + '总点位数据.txt', 'w') as f:
                 for j in file_points:
-                    f.write( ',' + j.source.pjid)
+                    f.write( repr(j.wkbgeometry.x)+',' +repr(j.wkbgeometry.y)+',' +repr(j.wkbgeometry.z)+','
+                             +i.surveyperson+','+repr(i.surveytime))
                     f.write('\n')
 
         # 生成外业文件
@@ -203,6 +203,17 @@ def files_download(request,idsurveyattribute,flag):
                     f.write(bytes(j.content))
 
     # 判断type值
+    for i in test:
+        # 外业文件夹路径
+        file_path1 = os.path.abspath('.') + "\\files_download\\" + i.pjid + '\\' + i.surveyperson + '\\' \
+                     + i.filetype + repr(i.idsurveyattribute) + '\\' + '外业文件' + '\\'
+        # 检查报告文件夹路径
+        file_path2 = os.path.abspath('.') + "\\files_download\\" + i.pjid + '\\' + i.surveyperson + '\\' \
+                     + i.filetype + repr(i.idsurveyattribute) + '\\' + '检查报告' + '\\'
+        # 总的点位数据和分析报告存放路径
+        file_path3 = os.path.abspath('.') + "\\files_download\\" + i.pjid + '\\'
+        # 所有点位数据和分析报告压缩后工程文件名
+        zip_name = os.path.abspath('.') + "\\files_download\\ZIP\\" + i.pjid + '.zip'
     if flag=='1':
         file_name = "分析报告.txt"
         new_file_path = os.path.join(file_path2, file_name)
